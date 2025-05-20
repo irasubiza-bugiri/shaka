@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-// import './App.css';
+import WelcomePage from './app/welcome';
 import RegisterStep1 from './app/register/registerStep1';
 import RegisterStep2 from './app/register/registerStep2';
 import RegisterStep3 from './app/register/registerStep3';
 import UserProfile from './app/userProfile';
-import WelcomePage from './app/welcome';
 import RegisterComplete from './app/register/registerComplete';
-import LostPage from './app/admin/lost';
-import NotificationsPage from './app/admin/notification';
-import LoginPage from './app/login';
 import Dashboard from './app/dashboard';
-import All from './app/all';
-import FoundPage from './app/admin/found';
-import MainPage from './app';
-import ErrorPage from './app/error';
+import FoundDocuments from './app/admin/found';
+import LostDocuments from './app/admin/lost';
+import Notifications from './app/admin/notification';
+import './App.css'
+import UnderDevelopment from './app/admin/home';
+import LandingPage from './app';
+
 
 
 interface FoundCredential {
@@ -240,20 +239,24 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/main" element={<MainPage />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path='/welcome' element={<WelcomePage />} />
+        {/* <Route path='/login' element={<LoginPage />} /> */}
         <Route path="/register/step1" element={<RegisterStep1Wrapper />} />
         <Route path="/register/step2" element={<RegisterStep2Wrapper />} />
         <Route path="/register/step3" element={<RegisterStep3Wrapper />} />
+        <Route path="/register/step2" element={<RegisterStep2Wrapper />} />
         <Route path="/register/complete" element={<RegisterComplete />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/all" element={<All />} />
-        <Route path="/admin/notifications" element={<NotificationsPage matches={matches} />} />
-        <Route path="/admin/found" element={<FoundPage foundCredentials={foundCredentials} />} />
-        <Route path="/admin/lost" element={<LostPage lostCredentials={lostCredentials} />} />
 
-        <Route path="*" element={<ErrorPage />} />
+        {/* Admin routes */}
+        <Route path='/admin/home' element={<UnderDevelopment/>} />
+        <Route path='/admin/found' element={<FoundDocuments foundCredentials={foundCredentials} />} />
+        <Route path='/admin/lost' element={<LostDocuments lostCredentials={lostCredentials} />} />
+        <Route path='/admin/notifications' element={<Notifications matches={matches} />} />
+
+        {/* user routes */}
+        <Route path="/user/profile" element={<UserProfileWrapper />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import '../../styles/register3.css'
 
 interface RegisterStep3Props {
     phone: string;

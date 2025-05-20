@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../styles/register2.css'
 
 interface RegisterStep2Props {
     initialPhone?: string;

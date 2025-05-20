@@ -1,92 +1,110 @@
-import { Link } from 'react-router-dom';
 
-export default function WelcomePage ()  {
+import { useNavigate } from 'react-router-dom';
+
+
+const WelcomePage= () => {
+  const route=useNavigate()
   return (
-    <div style={{
-      margin: 0,
-      padding: 0,
-      fontFamily: "'Arial', sans-serif",
-      display: 'flex',
-      overflow:'hidden',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      backgroundColor: '#1E90FF',
-      color: 'white',
-      textAlign: 'center',
-      position: 'relative',
-    }}>
-      <div className="avatar-container" style={{
-        width: '150px',
-        height: '150px',
-        borderRadius: '50%',
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: '30px',
-        overflow: 'hidden',
-        border: '3px solid rgba(255, 255, 255, 0.3)',
-      }}>
-        <img
-          src="/images/welcome.png"
-          alt="Avatar"
-          className="avatar"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
+    <html>
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FindWithAI - Document Recovery</title>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Arial', sans-serif;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: #1E90FF;
+                color: white;
+                text-align: center;
+                position: relative;
+              }
+
+              .avatar-container {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.2);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 30px;
+                overflow: hidden;
+                border: 3px solid rgba(255, 255, 255, 0.3);
+              }
+
+              .avatar {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+
+              .content {
+                max-width: 500px;
+                padding: 0 40px 40px;
+              }
+
+              h1 {
+                font-size: 28px;
+                margin-bottom: 30px;
+                font-weight: normal;
+              }
+
+              p {
+                font-size: 16px;
+                margin-bottom: 20px;
+                line-height: 1.5;
+              }
+
+              .btn {
+                display: inline-block;
+                background-color: white;
+                color: #1E90FF;
+                padding: 12px 30px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 16px;
+                margin-top: 20px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+              }
+
+              .btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              }
+            `,
           }}
         />
-      </div>
-      <div className="content" style={{
-        maxWidth: '500px',
-        padding: '0 40px 40px',
-      }}>
-        <h1 style={{
-          fontSize: '28px',
-          marginBottom: '30px',
-          fontWeight: 'normal',
-        }}>
-          Wabuze icyangombwa cyangwa wacyibonye
-        </h1>
-        <p style={{
-          fontSize: '16px',
-          marginBottom: '20px',
-          lineHeight: 1.5,
-        }}>
-          Dukorane hamwe kugirango ubone icyangombwa cyawe cyabuze cyangwa se urangishe ibyo watoye
-        </p>
-        <Link
-          to="/register/step1"
-          className="btn"
-          style={{
-            display: 'inline-block',
-            backgroundColor: 'white',
-            color: '#1E90FF',
-            padding: '12px 30px',
-            borderRadius: '4px',
-            textDecoration: 'none',
-            fontWeight: 'bold',
-            fontSize: '16px',
-            marginTop: '20px',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-          }}
-          onMouseOver={(e) => Object.assign(e.currentTarget.style, {
-            transform: 'translateY(-2px)',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-          })}
-          onMouseOut={(e) => Object.assign(e.currentTarget.style, {
-            transform: 'translateY(0)',
-            boxShadow: 'none',
-          })}
-        >
-          Tangira
-        </Link>
-      </div>
-    </div>
+      </head>
+      <body>
+        <div className="avatar-container">
+          <img src="/images/welcome.png" alt="Avatar" className="avatar" />
+        </div>
+
+        <div className="content">
+          <h1>Wabuze icyangombwa cyangwa wacyibonye</h1>
+          <p>
+            Dukorane hamwe kugirango ubone icyangombwa cyawe cyabuze cyangwa se
+            urangishe ibyo watoye
+          </p>
+          <button className="btn" onClick={()=>route('/register/step1')}>
+            Tangira
+          </button>
+        </div>
+      </body>
+    </html>
   );
 };
+
+export default WelcomePage;

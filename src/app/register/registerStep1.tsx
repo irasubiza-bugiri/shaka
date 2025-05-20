@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../styles/register1.css'
 
 interface RegisterStep1Props {
     initialData?: { name: string; email: string };
